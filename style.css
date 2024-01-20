@@ -21,12 +21,13 @@ body, html {
     color: #deeef3; /* Default text color, will be overridden by class */
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    padding: 30px 20px 20px 20px;
     box-sizing: border-box;
-    font-size: 16px; /* Adjust font size as needed */
-    width: 25%; /* Adjust width as needed to maintain 4:3 ratio */
-    max-width: 320px;
-    height: 240px; /* Height is set to maintain 4:3 ratio */
+    font-size: 11px; /* Adjust font size as needed */
+    vertical-align: middle;
+    width: 40%; /* Adjust width as needed to maintain 4:3 ratio */
+    max-width: 400px;
+    height: 270px; /* Height is set to maintain 4:3 ratio */
     margin: 0 10px;
     transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
     transform-style: preserve-3d;
@@ -46,7 +47,7 @@ body, html {
   }
   
   /* Quotation marks design */
-  .comment-box:before, .comment-box:after {
+  .comment-box:before {
     color: rgba(255, 255, 255, 0.7); /* Lighter shade of the text color for quotes */
     font-size: 5em; /* Large size for quotation marks */
     position: absolute;
@@ -57,6 +58,14 @@ body, html {
   .comment-box:before {
     content: "“";
     left: 10px;
+  }
+
+  .comment-box:after {
+    color: rgba(255, 255, 255, 0.7); /* Lighter shade of the text color for quotes */
+    font-size: 5em; /* Large size for quotation marks */
+    position: absolute;
+    bottom: 10px;
+    font-family: "Times New Roman", Times, serif; /* Fonts that render nice quotation marks */
   }
   
   .comment-box:after {
@@ -74,7 +83,7 @@ body, html {
   
   /* Age and local information */
   .age-local {
-    font-size: 0.8rem;
+    font-size: 0.6rem;
     position: absolute;
     bottom: 10px;
     width: 100%;
