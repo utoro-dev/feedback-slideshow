@@ -1,0 +1,37 @@
+.comment-box {
+    background-color: #f26543; /* Sample background color from the image */
+    padding: 30px;
+    border-radius: 30px; /* This creates the rounded corners */
+    position: relative;
+    max-width: 250px; /* Adjust based on your content */
+    margin: 20px;
+    font-family: Arial, sans-serif; /* Example font */
+    color: white; /* Text color */
+  }
+  
+  .comment-box:before,
+  .comment-box:after {
+    content: '“'; /* Opening quote */
+    font-size: 4em; /* Size of the quotation marks */
+    color: rgba(255, 255, 255, 0.6); /* Lighter color for the quote */
+    position: absolute;
+  }
+  
+  .comment-box:before {
+    top: 10px;
+    left: 10px;
+  }
+  
+  .comment-box:after {
+    content: '”'; /* Closing quote */
+    bottom: 10px;
+    right: 10px;
+  }
+  
+  .comment-text {
+    font-size: 1em;
+    line-height: 1.5;
+    position: relative;
+    z-index: 2;
+  }
+  
