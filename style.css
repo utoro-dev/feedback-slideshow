@@ -57,7 +57,7 @@ body, html {
     font-size: 0.7rem; /* Adjust font size as needed */
     vertical-align: middle;
     width: 40%; /* Adjust width as needed to maintain 4:3 ratio */
-    max-width: 360px;
+    max-width: 330px;
     height: 270px; /* Height is set to maintain 4:3 ratio */
     margin: 20px;
     transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
