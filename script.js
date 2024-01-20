@@ -17,7 +17,7 @@ function createCommentBox(comment, age, local, colorClass, displayTime) {
         </div>
     `;
     return commentBox;
-  }
+}
 
 function calculateDisplayTime(text) {
     const wordsPerMinute = 100;
