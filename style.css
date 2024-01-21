@@ -32,13 +32,13 @@ body, html {
   color: #deeef3; /* Default text color, will be overridden by class */
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  padding: 40px;
   box-sizing: border-box;
-  font-size: 1.5rem; /* Adjust font size as needed */
+  font-size: 1.4rem; /* Adjust font size as needed */
   vertical-align: middle;
   width: 40%; /* Adjust width as needed to maintain 4:3 ratio */
-  max-width: 400px;
-  height: 380px; /* Height is set to maintain 4:3 ratio */
+  max-width: 800px;
+  height: 450px; /* Height is set to maintain 4:3 ratio */
   margin: 20px;
   transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
   transform-style: preserve-3d;
