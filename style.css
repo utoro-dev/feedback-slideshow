@@ -1,105 +1,103 @@
 body, html {
-    height: 100%;
-    margin: 0;
-    font-family: 'Yu Gothic', sans-serif;
-    overflow-x: hidden; /* Keep this to prevent horizontal scrollbar on the whole page */
-    max-width: 100vw;
-    background-color: #f0f0f0; /* Background color */
-    align-items: center;
-    justify-content: center;
-    display: flex;
+  height: 100%;
+  margin: 0;
+  font-family: 'Yu Gothic', sans-serif;
+  overflow-x: hidden; /* Keep this to prevent horizontal scrollbar on the whole page */
+  max-width: 100vw;
+  background-color: #f0f0f0; /* Background color */
+  align-items: center;
+  justify-content: center;
+  display: flex;
 }
-  
+
 #feedback-container {
-    display: flex; /* Change to flex for better alignment */
-    justify-content: center; /* This will help center the child elements */
-    align-items: center; /* Vertically center the child elements */
-    padding: 20px;
+  display: flex; /* Change to flex for better alignment */
+  justify-content: center; /* This will help center the child elements */
+  align-items: center; /* Vertically center the child elements */
+  padding: 20px;
 }
 
 .comment-box .content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* This centers vertically in the flex container */
-    height: 100%; /* Take the full height of the comment box */
-    text-align: left; /* Optional: if you want to also center the text horizontally */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* This centers vertically in the flex container */
+  height: 100%; /* Take the full height of the comment box */
+  text-align: left; /* Optional: if you want to also center the text horizontally */
 }
-  
-  .comment-box {
-    /* position: relative; */
-    position: absolute;
-    background-color: #167f70; /* Default color, will be overridden by class */
-    color: #deeef3; /* Default text color, will be overridden by class */
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    box-sizing: border-box;
-    font-size: 1.1rem; /* Adjust font size as needed */
-    vertical-align: middle;
-    width: 40%; /* Adjust width as needed to maintain 4:3 ratio */
-    max-width: 500px;
-    height: 450px; /* Height is set to maintain 4:3 ratio */
-    margin: 20px;
-    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-    transform-style: preserve-3d;
-    opacity: 0.5; /* Half-visible side boxes */
-    overflow: hidden;
-  }
-  
-  .comment-box.main {
-    transform: translateX(0) scale(2);
-    opacity: 1;
-    z-index: 10; /* Ensures the main box is above others */
-  }
-  
-  .comment-box:not(.main) {
-    transform: translateX(0) scale(1);
-  }
-  
-  /* Quotation marks design */
-  .comment-box:before {
-    color: rgba(255, 255, 255, 0.7); /* Lighter shade of the text color for quotes */
-    font-size: 5em; /* Large size for quotation marks */
-    position: absolute;
-    top: 10px;
-    font-family: "Times New Roman", Times, serif; /* Fonts that render nice quotation marks */
-  }
-  
-  .comment-box:before {
-    content: "“";
-    left: 10px;
-  }
 
-  .comment-box:after {
-    color: rgba(255, 255, 255, 0.7); /* Lighter shade of the text color for quotes */
-    font-size: 5em; /* Large size for quotation marks */
-    position: absolute;
-    bottom: 10px;
-    font-family: "Times New Roman", Times, serif; /* Fonts that render nice quotation marks */
-  }
-  
-  .comment-box:after {
-    content: "”";
-    right: 10px;
-    bottom: 10px;
-  }
-  
-  /* Color classes */
-  .comment-box.color1 { background-color: #167f70; color: #deeef3; }
-  .comment-box.color2 { background-color: #f26543; color: #ffffff; }
-  .comment-box.color3 { background-color: #f1a5bc; color: #4e3278; }
-  .comment-box.color4 { background-color: #6578c2; color: #ffffff; }
-  .comment-box.color5 { background-color: #8c518a; color: #ffffff; }
-  
-  /* Age and local information */
-  .age-local {
-    font-size: 1.0rem;
-    position: absolute;
-    bottom: 20px;
-    right: 40px;
-    width: 100%;
-    text-align: right;
-    color: inherit; /* Ensures the text color matches the box's text color */
-  }
+.comment-box {
+  /* position: relative; */
+  position: absolute;
+  background-color: #167f70; /* Default color, will be overridden by class */
+  color: #deeef3; /* Default text color, will be overridden by class */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  box-sizing: border-box;
+  font-size: 1.1rem; /* Adjust font size as needed */
+  vertical-align: middle;
+  width: 40%; /* Adjust width as needed to maintain 4:3 ratio */
+  max-width: 400px;
+  height: 380px; /* Height is set to maintain 4:3 ratio */
+  margin: 20px;
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  transform-style: preserve-3d;
+  opacity: 0.5; /* Half-visible side boxes */
+  overflow: hidden;
+}
 
-  
+.comment-box.main {
+  transform: translateX(0) scale(2);
+  opacity: 1;
+  z-index: 10; /* Ensures the main box is above others */
+}
+
+.comment-box:not(.main) {
+  transform: translateX(0) scale(1);
+}
+
+/* Quotation marks design */
+.comment-box:before {
+  color: rgba(255, 255, 255, 0.7); /* Lighter shade of the text color for quotes */
+  font-size: 5em; /* Large size for quotation marks */
+  position: absolute;
+  top: 10px;
+  font-family: "Times New Roman", Times, serif; /* Fonts that render nice quotation marks */
+}
+
+.comment-box:before {
+  content: "“";
+  left: 10px;
+}
+
+.comment-box:after {
+  color: rgba(255, 255, 255, 0.7); /* Lighter shade of the text color for quotes */
+  font-size: 5em; /* Large size for quotation marks */
+  position: absolute;
+  bottom: 10px;
+  font-family: "Times New Roman", Times, serif; /* Fonts that render nice quotation marks */
+}
+
+.comment-box:after {
+  content: "”";
+  right: 10px;
+  bottom: 10px;
+}
+
+/* Color classes */
+.comment-box.color1 { background-color: #167f70; color: #deeef3; }
+.comment-box.color2 { background-color: #f26543; color: #ffffff; }
+.comment-box.color3 { background-color: #f1a5bc; color: #4e3278; }
+.comment-box.color4 { background-color: #6578c2; color: #ffffff; }
+.comment-box.color5 { background-color: #8c518a; color: #ffffff; }
+
+/* Age and local information */
+.age-local {
+  font-size: 1.0rem;
+  position: absolute;
+  bottom: 20px;
+  right: 40px;
+  width: 100%;
+  text-align: right;
+  color: inherit; /* Ensures the text color matches the box's text color */
+}
