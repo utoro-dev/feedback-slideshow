@@ -87,10 +87,10 @@ body, html {
 }
 
 /* Color classes */
-.comment-box.color3 { background-color: #f1a5bc; color: #4e3278; }
-.comment-box.color4 { background-color: #6578c2; color: #ffffff; }
-.comment-box.color1 { background-color: #167f70; color: #deeef3; }
-.comment-box.color5 { background-color: #8c518a; color: #ffffff; }
+.comment-box.color1 { background-color: #f1a5bc; color: #4e3278; }
+.comment-box.color2 { background-color: #6578c2; color: #ffffff; }
+.comment-box.color3 { background-color: #167f70; color: #deeef3; }
+.comment-box.color4 { background-color: #8c518a; color: #ffffff; }
 
 /* Age and local information */
 .age-local {
