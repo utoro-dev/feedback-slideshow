@@ -98,10 +98,12 @@ function updateSlideshow() {
         const offset = (index - currentIndex) * (boxWidth + 20); // Calculate the offset for each box, 20 is the margin
         box.style.transform = `translateX(${offset}px) scale(${index === currentIndex ? 2 : 1})`; // Move and scale boxes
         box.style.opacity = index === currentIndex ? 1 : 0.5;
+        box.style.zIndex = 1;
     });
 
     const mainBox = boxes[currentIndex];
     mainBox.classList.add('main');
+    mainBox.style.zIndex = 10;
 
     const displayTime = parseInt(mainBox.getAttribute('data-display-time'));
 
