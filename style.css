@@ -93,7 +93,7 @@ body, html {
   
   /* Age and local information */
   .age-local {
-    font-size: 0.6rem;
+    font-size: 1.0rem;
     position: absolute;
     bottom: 20px;
     right: 40px;
