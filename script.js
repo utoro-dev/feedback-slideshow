@@ -19,6 +19,13 @@ function createCommentBox(comment, age, local, colorClass, displayTime) {
     return commentBox;
 }
 
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+    }
+}
+
 function calculateDisplayTime(text) {
     const wordsPerMinute = 100;
     const words = text.split(/\s+/).length;
@@ -30,6 +37,7 @@ let boxes = [];
 
 async function startSlideshow() {
     const feedbackData = await getFeedback();
+    shuffleArray(feedbackData);
     feedbackData.forEach((data, index) => {
       const colorClass = `color${(index % 5) + 1}`; // Cycle through 5 colors
       // Pass the displayTime from the data to createCommentBox
