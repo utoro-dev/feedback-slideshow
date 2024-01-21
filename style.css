@@ -2,6 +2,7 @@ body, html {
   height: 100%;
   margin: 0;
   font-family: 'Yu Gothic', sans-serif;
+  font-weight: bold;
   overflow-x: hidden; /* Keep this to prevent horizontal scrollbar on the whole page */
   max-width: 100vw;
   background-color: #f0f0f0; /* Background color */
