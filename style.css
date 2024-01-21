@@ -32,13 +32,14 @@ body, html {
   color: #deeef3; /* Default text color, will be overridden by class */
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 40px;
+  padding: 3%;
   box-sizing: border-box;
-  font-size: 1.4rem; /* Adjust font size as needed */
+  font-size: 1.2rem; /* Adjust font size as needed */
   vertical-align: middle;
   width: 40%; /* Adjust width as needed to maintain 4:3 ratio */
-  max-width: 800px;
-  height: 450px; /* Height is set to maintain 4:3 ratio */
+  height: 39%;
+  /* max-width: 800px; */
+  /* height: 450px;  */
   margin: 20px;
   transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
   transform-style: preserve-3d;
@@ -93,7 +94,7 @@ body, html {
 
 /* Age and local information */
 .age-local {
-  font-size: 1.0rem;
+  font-size: 1.2rem;
   position: absolute;
   bottom: 20px;
   right: 40px;
