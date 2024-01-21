@@ -34,10 +34,10 @@ body, html {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 3%;
   box-sizing: border-box;
-  font-size: 1.2rem; /* Adjust font size as needed */
+  font-size: 1.25rem; /* Adjust font size as needed */
   vertical-align: middle;
-  width: 40%; /* Adjust width as needed to maintain 4:3 ratio */
-  height: 39%;
+  width: 47%; /* Adjust width as needed to maintain 4:3 ratio */
+  height: 45%;
   /* max-width: 800px; */
   /* height: 450px;  */
   margin: 20px;
