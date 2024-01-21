@@ -34,11 +34,11 @@ body, html {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     box-sizing: border-box;
-    font-size: 0.9rem; /* Adjust font size as needed */
+    font-size: 1.1rem; /* Adjust font size as needed */
     vertical-align: middle;
     width: 40%; /* Adjust width as needed to maintain 4:3 ratio */
-    max-width: 400px;
-    height: 350px; /* Height is set to maintain 4:3 ratio */
+    max-width: 500px;
+    height: 450px; /* Height is set to maintain 4:3 ratio */
     margin: 20px;
     transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
     transform-style: preserve-3d;
