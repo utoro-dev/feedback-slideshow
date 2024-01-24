@@ -39,7 +39,7 @@ async function startSlideshow() {
     const feedbackData = await getFeedback();
     shuffleArray(feedbackData);
     feedbackData.forEach((data, index) => {
-      const colorClass = `color${(index % 4) + 1}`; // Cycle through 4 colors
+      const colorClass = `color${(index % 5) + 1}`; // Cycle through 5 colors
       // Pass the displayTime from the data to createCommentBox
       const box = createCommentBox(data.comment, data.age, data.local, colorClass, data.displayTime);
       feedbackContainer.appendChild(box);
