@@ -31,7 +31,7 @@ body, html {
   position: absolute;
   background-color: #167f70; /* Default color, will be overridden by class */
   color: #deeef3; /* Default text color, will be overridden by class */
-  border-radius: 10px;
+  border-radius: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 3%;
   box-sizing: border-box;
@@ -100,4 +100,31 @@ body, html {
   width: 100%;
   text-align: right;
   color: inherit; /* Ensures the text color matches the box's text color */
+}
+
+.twitter-tweet {
+	margin-left: auto;
+	margin-right: auto;
+  vertical-align: middle;
+  width: 100%; /* Full width of the container */
+  height: 100%;
+}
+
+.tweet-box {
+  position: absolute;
+  vertical-align: middle;
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  transform-style: preserve-3d;
+  opacity: 0.5; /* Half-visible side boxes */
+  overflow: hidden;
+}
+
+.tweet-box.main {
+  transform: translateX(0) scale(2);
+  opacity: 1;
+  z-index: 10; /* Ensures the main box is above others */
+}
+
+.tweet-box:not(.main) {
+  transform: translateX(0) scale(1);
 }

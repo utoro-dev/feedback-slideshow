@@ -9,14 +9,25 @@ async function getFeedback() {
 function createCommentBox(comment, age, local, colorClass, displayTime) {
     const commentBox = document.createElement('div');
     commentBox.className = `comment-box ${colorClass}`;
-    commentBox.setAttribute('data-display-time', displayTime); // Store displayTime as a data attribute
-    commentBox.innerHTML = `
-        <div class="content">
-         <p>${comment}</p>
-            ${(age && local) ? `<div class="age-local">${age} - ${local}</div>` : ''}
-        </div>
-    `;
+    commentBox.setAttribute('data-display-time', displayTime);
+
+        commentBox.innerHTML = `
+            <div class="content">
+                <p>${comment}</p>
+                ${(age && local) ? `<div class="age-local">${age} - ${local}</div>` : ''}
+            </div>
+        `;
     return commentBox;
+}
+
+function createTweetBox(embedLink, colorClass, displayTime) {
+    const tweetBox = document.createElement('div');
+    tweetBox.className = `tweet-box ${colorClass}`;
+    tweetBox.setAttribute('data-display-time', displayTime);
+
+    tweetBox.innerHTML = embedLink;
+
+    return tweetBox;
 }
 
 function shuffleArray(array) {
@@ -26,12 +37,6 @@ function shuffleArray(array) {
     }
 }
 
-function calculateDisplayTime(text) {
-    const wordsPerMinute = 100;
-    const words = text.split(/\s+/).length;
-    return Math.max((words / wordsPerMinute) * 60 * 1000, 3000); // Minimum display time of 3 seconds
-}
-
 let currentIndex = 0;
 let boxes = [];
 
@@ -39,64 +44,23 @@ async function startSlideshow() {
     const feedbackData = await getFeedback();
     shuffleArray(feedbackData);
     feedbackData.forEach((data, index) => {
-      const colorClass = `color${(index % 5) + 1}`; // Cycle through 5 colors
-      // Pass the displayTime from the data to createCommentBox
-      const box = createCommentBox(data.comment, data.age, data.local, colorClass, data.displayTime);
-      feedbackContainer.appendChild(box);
-      boxes.push(box);
+        const colorClass = `color${(index % 5) + 1}`;
+        let box;
+        if (data.is_tweet) {
+            box = createTweetBox(data.embed_link, colorClass, data.displayTime);
+        } else {
+            box = createCommentBox(data.comment, data.age, data.local, colorClass, data.displayTime);
+        }
+        feedbackContainer.appendChild(box);
+        boxes.push(box);
     });
+
+    if (typeof twttr !== 'undefined' && twttr.widgets) {
+        twttr.widgets.load();
+    }
   
     updateSlideshow();
 }
-
-// function updateSlideshow() {
-//     boxes.forEach((box, index) => {
-//       box.classList.remove('main'); // Reset all boxes to non-main state
-//       box.style.transform = `translateX(${(index - currentIndex) * 100}%) scale(1)`; // Position side boxes
-//       box.style.opacity = 0.5;
-//     });
-  
-//     const mainBox = boxes[currentIndex];
-//     mainBox.classList.add('main');
-//     mainBox.style.transform = 'translateX(0) scale(2)';
-//     mainBox.style.opacity = 1;
-  
-//     // Retrieve displayTime from the data attribute of the mainBox
-//     const displayTime = parseInt(mainBox.getAttribute('data-display-time'));
-  
-//     currentIndex = (currentIndex + 1) % boxes.length; // Move to the next index, loop back if at the end
-  
-//     setTimeout(updateSlideshow, displayTime); // Update the slideshow after the display time of the current box
-// }  
-
-// function updateSlideshow() {
-//     // previosu とnextが重なる
-//     boxes.forEach((box, index) => {
-//       box.classList.remove('main'); // Reset all boxes to non-main state
-//       if (index < currentIndex) {
-//         // Position boxes to the left of the main box
-//         box.style.transform = `translateX(-50%) scale(0.8)`; 
-//       } else if (index > currentIndex) {
-//         // Position boxes to the right of the main box
-//         box.style.transform = `translateX(50%) scale(0.8)`;
-//       } else {
-//         // Main box in the center
-//         box.style.transform = 'translateX(0) scale(1)';
-//       }
-//       box.style.opacity = (index === currentIndex) ? 1 : 0.5;
-//     });
-  
-//     const mainBox = boxes[currentIndex];
-//     mainBox.classList.add('main');
-  
-//     // Retrieve displayTime from the data attribute of the mainBox
-//     const displayTime = parseInt(mainBox.getAttribute('data-display-time'));
-  
-//     currentIndex = (currentIndex + 1) % boxes.length; // Move to the next index, loop back if at the end
-  
-//     setTimeout(updateSlideshow, displayTime); // Update the slideshow after the display time of the current box
-// }  
-
 
 function updateSlideshow() {
     const totalBoxes = boxes.length;
@@ -107,6 +71,7 @@ function updateSlideshow() {
         box.style.transform = `translateX(${offset}px) scale(${index === currentIndex ? 2 : 1})`; // Move and scale boxes
         box.style.opacity = index === currentIndex ? 1 : 0.5;
         box.style.zIndex = 1;
+        box.classList.remove('main');
     });
 
     const mainBox = boxes[currentIndex];
@@ -119,85 +84,6 @@ function updateSlideshow() {
 
     setTimeout(updateSlideshow, displayTime);
 }
-
-// function updateSlideshow() {
-//     const boxWidth = feedbackContainer.querySelector('.comment-box').offsetWidth; // Width of a box
-//     const containerWidth = feedbackContainer.offsetWidth; // Width of the container
-//     const halfContainerWidth = containerWidth / 2;
-//     const halfBoxWidth = boxWidth / 2;
-
-//     boxes.forEach((box, index) => {
-//         const positionFromCenter = (index - currentIndex) * (boxWidth + 20); // 20 is the margin
-//         const leftPosition = halfContainerWidth - halfBoxWidth + positionFromCenter;
-//         box.style.left = `${leftPosition}px`; // Position the box
-//         box.style.transform = `scale(${index === currentIndex ? 2 : 1})`; // Scale the box
-//         box.style.opacity = index === currentIndex ? 1 : 0.5;
-//     });
-
-//     const mainBox = boxes[currentIndex];
-//     mainBox.classList.add('main');
-
-//     const displayTime = parseInt(mainBox.getAttribute('data-display-time'));
-
-//     currentIndex = (currentIndex + 1) % boxes.length;
-
-//     setTimeout(updateSlideshow, displayTime);
-// }
-
-// function updateSlideshow() {
-//     const boxWidth = feedbackContainer.querySelector('.comment-box').offsetWidth; // Width of a box
-//     const halfBoxWidth = boxWidth / 2;
-//     const spacing = 20; // Spacing between boxes
-
-//     boxes.forEach((box, index) => {
-//         const positionFromCurrent = (index - currentIndex) * (boxWidth + spacing); // Position relative to the current box
-//         const containerCenter = feedbackContainer.offsetWidth / 2; // Center of the container
-//         const leftPosition = containerCenter - halfBoxWidth + positionFromCurrent;
-
-//         box.style.left = `${leftPosition}px`; // Set the left position
-//         box.style.transform = `scale(${index === currentIndex ? 2 : 1})`; // Scale the box
-//         box.style.opacity = index === currentIndex ? 1 : 0.5;
-//     });
-
-//     const mainBox = boxes[currentIndex];
-//     mainBox.classList.add('main');
-//     const displayTime = parseInt(mainBox.getAttribute('data-display-time'));
-
-//     currentIndex = (currentIndex + 1) % boxes.length;
-//     setTimeout(updateSlideshow, displayTime);
-// }
-
-// function updateSlideshow() {
-//     const boxWidth = feedbackContainer.querySelector('.comment-box').offsetWidth; // Width of a box
-//     const containerWidth = feedbackContainer.offsetWidth; // Width of the container
-//     const halfContainerWidth = containerWidth / 2;
-//     const halfBoxWidth = boxWidth / 2;
-
-//     boxes.forEach((box, index) => {
-//         const positionFromCenter = (index - currentIndex) * (boxWidth + 20); // 20 is the margin
-//         const leftPosition = halfContainerWidth - halfBoxWidth + positionFromCenter;
-//         box.style.left = `${leftPosition}px`; // Position the box
-//         box.style.transform = `scale(${index === currentIndex ? 2 : 1})`; // Scale the box
-//         box.style.opacity = index === currentIndex ? 1 : 0.5;
-//     });
-
-//     const mainBox = boxes[currentIndex];
-//     mainBox.classList.add('main');
-
-//     const displayTime = parseInt(mainBox.getAttribute('data-display-time'));
-
-//     // Scroll adjustment
-//     const mainBoxLeft = mainBox.offsetLeft;
-//     const scrollToPosition = mainBoxLeft + halfBoxWidth - halfContainerWidth;
-//     feedbackContainer.scrollLeft = scrollToPosition; // Adjust the scroll position
-
-//     currentIndex = (currentIndex + 1) % boxes.length;
-
-//     setTimeout(updateSlideshow, displayTime);
-// }
-
-
-
 
 startSlideshow();
 
