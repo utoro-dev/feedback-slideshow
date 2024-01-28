@@ -44,6 +44,7 @@ body, html {
   transform-style: preserve-3d;
   opacity: 0.5; /* Half-visible side boxes */
   overflow: hidden;
+  z-index: 5;
 }
 
 .comment-box.main {
@@ -62,6 +63,7 @@ body, html {
   font-size: 5em; /* Large size for quotation marks */
   position: absolute;
   top: 10px;
+  z-index: 1;
   font-family: "Times New Roman", Times, serif; /* Fonts that render nice quotation marks */
 }
 
@@ -75,6 +77,7 @@ body, html {
   font-size: 5em; /* Large size for quotation marks */
   position: absolute;
   bottom: 10px;
+  z-index: 1;
   font-family: "Times New Roman", Times, serif; /* Fonts that render nice quotation marks */
 }
 

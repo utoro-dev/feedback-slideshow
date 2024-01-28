@@ -6,6 +6,18 @@ async function getFeedback() {
   return response.json();
 }
 
+function loadTwitterWidgets() {
+    if (typeof twttr !== 'undefined' && twttr.widgets) {
+        twttr.widgets.load();
+    } else {
+        window.addEventListener('load', function() {
+            if (typeof twttr !== 'undefined' && twttr.widgets) {
+                twttr.widgets.load();
+            }
+        });
+    }
+}
+
 function createCommentBox(comment, age, local, colorClass, displayTime) {
     const commentBox = document.createElement('div');
     commentBox.className = `comment-box ${colorClass}`;
@@ -41,6 +53,7 @@ let currentIndex = 0;
 let boxes = [];
 
 async function startSlideshow() {
+
     const feedbackData = await getFeedback();
     shuffleArray(feedbackData);
     feedbackData.forEach((data, index) => {
@@ -55,9 +68,7 @@ async function startSlideshow() {
         boxes.push(box);
     });
 
-    if (typeof twttr !== 'undefined' && twttr.widgets) {
-        twttr.widgets.load();
-    }
+    loadTwitterWidgets()
   
     updateSlideshow();
 }
