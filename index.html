@@ -20,5 +20,24 @@
   
     gtag('config', 'G-7B5K7H8PYM');
   </script>
+  <script>
+  document.addEventListener('visibilitychange', function() {
+    if (document.visibilityState === 'hidden') {
+      // User is leaving the tab or minimizing the browser window
+      gtag('event', 'tab_hidden', {
+        'event_category': 'engagement',
+        'event_label': 'Tab or Window Minimized',
+        'non_interaction': true
+      });
+    } else if (document.visibilityState === 'visible') {
+      // User comes back to the tab
+      gtag('event', 'tab_visible', {
+        'event_category': 'engagement',
+        'event_label': 'Tab or Window Visible Again',
+        'non_interaction': true
+      });
+    }
+  });
+  </script>
 </body>
 </html>
